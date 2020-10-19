@@ -6,9 +6,8 @@
 
 Пример:
 
-`Input: List<Integer> =  1,1,2,3,4`
-
-`Output: {1:2,2:1,3:1,4:1} Map<Int, Int>`
+    Input: List<Integer> =  1,1,2,3,4
+    Output: {1:2,2:1,3:1,4:1} Map<Int, Int>
 
 **Task2**
 
@@ -18,6 +17,5 @@
 
 Пример:
 
-`Input: List<String> = ["abc", "abd", "abf"]`
-
-`Output: String = "ab"`
+    Input: List<String> = ["abc", "abd", "abf"]
+    Output: String = "ab"

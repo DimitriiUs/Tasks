@@ -42,10 +42,19 @@ public class Runner {
     private static String findLongestPrefixWithStream(List<String> list) {
         if (isNullOrEmpty(list)) return EMPTY_VALUE_STRING;
 
-        String first = list.stream().filter(Objects::nonNull).min(String::compareTo).get();
-        String last = list.stream().filter(Objects::nonNull).max(String::compareTo).get();
+        String first = list
+                        .stream()
+                        .filter(Objects::nonNull)
+                        .min(String::compareTo).get();
+        String last = list
+                        .stream()
+                        .filter(Objects::nonNull)
+                        .max(String::compareTo).get();
 
-        int counter = (int) IntStream.range(0, first.length()).takeWhile(i -> first.charAt(i) == last.charAt(i)).count();
+        int counter = (int) IntStream
+                            .range(0, first.length())
+                            .takeWhile(i -> first.charAt(i) == last.charAt(i))
+                            .count();
 
         return first.substring(0, counter);
     }

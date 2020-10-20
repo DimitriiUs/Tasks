@@ -19,7 +19,9 @@ public class Runner {
     }
 
     private static <T> Map<T, Long> countRepeatingElementsWithStream(List<T> list) {
-        return list.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        return list
+                .stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 
     private static <T> Map<T, Long> countRepeatingElementsVersion1(List<T> list) {

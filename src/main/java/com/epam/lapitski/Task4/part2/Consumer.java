@@ -1,17 +1,36 @@
 package com.epam.lapitski.Task4.part2;
 
-public class Consumer implements Runnable {
-    private Buffer buffer;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 
-    public Consumer(Buffer buffer) {
+public class Consumer implements Runnable {
+    private final Buffer buffer;
+    private final CyclicBarrier barrier;
+
+    public Consumer(Buffer buffer, CyclicBarrier barrier) {
         this.buffer = buffer;
+        this.barrier = barrier;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < 10; i++) {
-            int gotValue = buffer.get();
-            System.out.println("Consumer take " + gotValue);
+        try {
+            barrier.await();
+
+            while (true) {
+                Integer gotValue;
+
+                gotValue = buffer.get();
+
+                if (gotValue == null) {
+                    break;
+                }
+
+                System.out.println(Thread.currentThread().getName() + " Consumer get " + gotValue);
+            }
+
+        } catch (InterruptedException | BrokenBarrierException e) {
+            e.printStackTrace();
         }
     }
 }

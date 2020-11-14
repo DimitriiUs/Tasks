@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 public class Runner4 {
     public static void main(String[] args) {
 
-        deleteTestData();
+//        deleteTestData();
 
         DataGenerator generator = new DataGenerator(100);
         generator.generateData();
